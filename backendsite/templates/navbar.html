@@ -1,0 +1,45 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>Hawthorne and AG Realty</title>
+  
+</head>
+
+<nav>
+    {% url 'index' as index_url %}
+    <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}">Home</a>{% endif %}</span>
+    {% url 'search' as search_url %}
+    <span>{% if request.path == search_url %}Search{% else %}<a href="{% url 'search' %}">Search</a>{% endif %}</span>
+    {% url 'sell' as sell_url %}
+    <span>{% if request.path == sell_url %}Sell{% else %}<a href="{% url 'sell' %}">Sell</a>{% endif %}</span>
+    {% url 'communities' as communities %}
+    <span>{% if request.path == communities_url %}Communities{% else %}<a href="{% url 'communities' %}">Communities</a>{% endif %}</span>
+    {% url 'properties' as properties_url %}
+    <span>{% if request.path == properties_url %}Properties{% else %}<a href="{% url 'properties' %}">Properties</a>{% endif %}</span>
+    {% url 'listings' as listings_url %}
+    <span>{% if request.path == listings_url %}Listings{% else %}<a href="{% url 'listings' %}">Listings</a>{% endif %}</span>
+    {% url 'resources' as resources_url %}
+    <span>{% if request.path == resources_url %}Resources{% else %}<a href="{% url 'resources' %}">Resources</a>{% endif %}</span>
+    {% url 'about' as about_url %}
+    <span>{% if request.path == about_url %}About{% else %}<a href="{% url 'about' %}">About</a>{% endif %}</span>
+    {% url 'contact' as contact_url %}
+    <span>{% if request.path == contact_url %}Contact{% else %}<a href="{% url 'contact' %}">Contact</a>{% endif %}</span>
+    {% url 'signup' as signup_url %}
+    <span>{% if request.path == signup_url %}Sign-Up{% else %}<a href="{% url 'signup' %}">Sign-Up</a>{% endif %}</span>
+
+    <span style="float:right">
+        {% if user.is_authenticated %}
+        {% url 'profile' as profile_url %}
+        <span>Hi {% if request.path == profile_url %}{{user.username}}{% else %}<a href="{{ profile_url }}">{{user.username}}</a>{% endif %}!</span>
+        {% else %}
+            <span><a href="{% url 'login' %}">Login</a></span>
+        {% endif %}
+    </span>
+</nav>
